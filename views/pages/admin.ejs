@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/standard.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <title>ADMIN PAGE</title>
+</head>
+
+<body id="bootstrap-overrides">
+    <div class="container">
+        <header class="nav-scroller py-2">
+
+            <div class="d-flex justify-content-center">
+                <div class="col-md-6-offset-3 py-4">
+                    <h1 class="text-dark">ADMIN PANEL</h1>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <nav class="nav justify-content-center">
+                    <a class="p-1 text-muted col-md-2" href="/">Arrangement</a>
+                    <a class="p-1 text-muted col-md-2" href="#">Reservation</a>
+                    <a class="p-1 text-muted col-md-2" href="#">Café</a>
+                    <a class="p-1 text-muted col-md-2" href="#">Om os</a>
+
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <input class="form-control col-md-6" placeholder="">
+                        <a class="btn btn-md btn-outline-secondary ml-2" href="#">Søg</a>
+                    </div>
+                </nav>
+
+            </div>
+            <!-- /.col-md-12 -->
+        </header>
+        <div>&nbsp;</div>
+
+        <!-- opretter arrangement -->
+        <Section class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <form method="POST" action="/opret">
+                    <div class="form-group row">
+                        <label for="example-text-input">Title:</label>
+                        <input type="navn" name="navn" id="example-text-input" class="form-control" placeholder="virker ikke">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input">Dato:</label>
+                        <input type="varighed" name="varighed" id="example-text-input" class="form-control" placeholder="virker ikke">
+                    </div>
+
+                    <!-- <div class="form-group row">
+                        <label for="example-text-input">Pris:</label>
+                        <input type="pris" name="pris" id="example-text-input" class="form-control" placeholder="virker ikke">
+                    </div> -->
+
+                    <div class="form-group row">
+                        <label for="exampleTextarea">Beskrivelse:</label>
+                        <textarea type="beskrivelse" name="beskrivelse" class="form-control" id="exampleTextarea" rows="3" placeholder="virker ikke"></textarea>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input">Billede</label>
+                        <input type="text" name="fk_billede" class="form-control" id="example-text-input" class="form-control" placeholder="virker ikke">
+                    </div>
+
+    
+
+                    <div class="form-group row">
+                        <label for="exampleSelect1">Kategori:</label>
+                        <select id="kategori" name="fk_kategori" type="kategori" onchange="hentData2();">
+                            <% kategori.forEach(function(cat){ %>
+
+                                <option value="<%= cat.kategori_id %>">
+                                    <%= cat.navn %>
+                                </option>
+                                <% })  %>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-danger col-md-6 mb-5">OPRET</button>
+                </form>
+            </div>
+        </Section>
+
+
+        <!-- kategori select-->
+        <select id="selectpicker2" onchange="hentData2();">
+            <option value="0">Alle</option>
+            <% kategori.forEach(function(elm){ %>
+                <option value="<%= elm.kategori_id %>">
+                    <%= elm.navn %>
+                </option>
+                <% })  %>
+        </select>
+
+        <!-- arrangementer -->
+        <article id="content2">
+
+            <% arrangement.forEach(elm => { %>
+
+                <div class="col-md-3 my-3 padding-0">
+
+                    <h5 class="d-flex justify-content-center">
+                        <%= elm.ka %>
+                    </h5>
+
+                    <img class="card-img-top" src="img/<%= elm.billede %>" alt="Card image cap">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title d-flex justify-content-center">
+                            <%= elm.navn %>
+                        </h5>
+                        <p class="card-text">
+                            <b>Premiere: </b>
+                            <%= elm.dato %>
+                        </p>
+                        <a href="/redigere/<%= elm.arrangement_id %>" class="btn btn-warning d-flex justify-content-center col-md-4 m-2">RET</a>
+                        <!-- <a onclick="return confirm('Er du sikker?'), slet('<%= elm.arrangement_id %>');" class="btn btn-danger d-flex justify-content-center col-md-4 m-2">SLET</a> -->
+                        <form action="/slet/<%= elm.arrangement_id %>" method="POST">
+                            <button onclick="return confirm('Er du sikker?')" type="submit" class="btn btn-danger d-flex justify-content-center col-md-4 m-2">Slet</button>
+                        </form>
+
+                    </div>
+                </div>
+                <% }) %>
+        </article>
+
+        <footer class="blog-footer clearfix">
+            <a href="#">Top</a>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous">
+            </script>
+        <script src="static/js/crud.js"></script>
+    </div>
+</body>
+
+</html>

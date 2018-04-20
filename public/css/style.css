@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+
+li {
+	list-style: none;
+}
+footer {
+	clear: both;
+}
+
+#selectpicker2 {
+	margin-left: 46%;
+}
+.btn-danger {
+	margin-left: 25%;
+}
+
+
+
+
+
+/* Galleri */
+.oopgallery-container {
+	display: inline-block;
+	width: 400px;
+	margin-right: 15px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.oopgallery-image {
+	margin-bottom: 10px;
+	min-height: 40px;
+	max-height: 300px;
+	max-width: 400px;
+	border: 1px solid #000;
+	border-radius: 5px;
+}
+
+.oopgallery-controls {
+	text-align: center;
+	position: relative;
+}
+
+.oopgallery-container button {
+	font-weight: bold;
+	line-height: 30px;
+	font-size: 15px;
+	height: 30px;
+	width: 30px;
+	border-radius: 5px;
+	border: 1px solid;
+	border-color: #aaa #000 #000 #aaa;
+	background-color: #ddd;
+	outline: none;
+}
+
+.oopgallery-container button:hover {
+	background-color: #eee;
+}
+
+.oopgallery-container button:active {
+	background-color: #bbb;
+}
+
+.oopgallery-image-number {
+	display: inline-block;
+	padding: 0px 10px;
+	width: 55px;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.oopgallery-control-wrap {
+	position: absolute;
+	right: 13px;
+	line-height: 30px;
+	font-size: 11px;
+	color: #aaa;
+}
+
+.oopgallery-control-wrap:hover {
+	color: #555;
+}
+
+.oopgallery-control-wrap:active {
+	color: #000;
+}

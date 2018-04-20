@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/standard.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+    <title>Kulturhuset</title>
+</head>
+
+<body id="bootstrap-overrides">
+    <div class="container">
+        <header class="nav-scroller py-2">
+
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-md-6 text-right">
+                    <a class="blog-header-logo text-dark" href="/">Logo her</a>
+                </div>
+                <a class="p-1 text-muted col-md-2" href="/Login">Admin</a>
+            </div>
+
+            <div class="col-md-12">
+                <nav class="nav justify-content-center">
+                    <a class="p-1 text-muted col-md-2" href="#">Arrangement</a>
+                    <a class="p-1 text-muted col-md-2" href="#">Reservation</a>
+                    <a class="p-1 text-muted col-md-2" href="#">Café</a>
+                    <a class="p-1 text-muted col-md-2" href="#">Om os</a>
+                    
+                    <div class="col-md-4 d-flex justify-content-end">
+                        <input class="form-control col-md-6" placeholder="">
+                        <a class="btn btn-md btn-outline-secondary ml-2" href="#">Søg</a>
+                    </div>
+                </nav>
+
+            </div>
+            <!-- /.col-md-12 -->
+        </header>
+
+        <select id="selectpicker" onchange="hentData();">
+            <option value="0">Alle</option>
+            <% kategori.forEach(function(elm){ %>
+                <option value="<%= elm.kategori_id %>">
+                    <%= elm.navn %>
+                </option>
+            <% })  %>
+        </select>
+
+        <section id="content ">
+
+            <% arrangement.forEach(arrangement => { %>
+
+                <div class="col-md-3 my-3">
+
+                    <h5 class="d-flex justify-content-center">
+                        <%= arrangement.ka %>
+                    </h5>
+
+                    <img class="card-img-top" src="img/<%= arrangement.billede %>" alt="Card image cap">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title d-flex justify-content-center">
+                            <%= arrangement.navn %>
+                        </h5>
+
+                        <p class="card-text">
+                            <b>Premiere: </b>
+                            <%= arrangement.dato %>
+                        </p>
+
+                        <a href="#" class="btn btn-warning">BILLETTER</a>
+                        <a href="#" class="btn btn-dark">LÆS MERE</a>
+
+                    </div>
+                </div>
+                <% }) %>
+            </section>
+
+
+
+
+        <footer class="blog-footer clearfix">
+            <a href="#">Top</a>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous">
+            </script>
+        <script src="static/js/script.js"></script>
+    </div>
+</body>
+
+</html>

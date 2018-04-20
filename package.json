@@ -1,0 +1,30 @@
+{
+  "name": "mattt_kulturhuset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "mysql2": "^1.5.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.23.6",
+    "connect-browser-sync": "^2.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattThomassen/mattT_kulturhuset.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MattThomassen/mattT_kulturhuset/issues"
+  },
+  "homepage": "https://github.com/MattThomassen/mattT_kulturhuset#readme"
+}
